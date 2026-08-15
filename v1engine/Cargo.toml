@@ -1,0 +1,9 @@
+[package]
+name = "v1engine"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sha2 = "0.10"
+hex-literal = "1.1.0"
+hex = "0.4.3"
