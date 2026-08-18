@@ -54,7 +54,7 @@ impl CacheEngine {
         
         let cache_meta_data = CacheMeta {
                                 clocation: absolute_cache_file_path.clone(),
-                                size: fs::metadata(&absolute_cache_file_path).unwrap().len()
+                                size: fs::metadata(&absolute_cache_file_path)?.len()
                             };
         let serialized_meta = oxicode::encode_to_vec(&cache_meta_data)
             .map_err(|e| Error::other(format!("encode cache metadata failed: {e}")))?;
@@ -102,7 +102,6 @@ impl CacheEngine {
         self.meta.delete(cache_key.as_bytes()).map_err(|e| Error::other(format!("rocksdb delete failed: {e}")))?;
         Ok(true)
     }
-
 
 }
 
